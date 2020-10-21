@@ -1,7 +1,42 @@
-export default function Home() {
+import { GetServerSideProps } from 'next';
+import { Title } from '../styles/pages/home'
+
+interface Product {
+  id: string;
+  title: string
+}
+
+interface HomeProps {
+  recommendedProducts: Product[]
+}
+
+export default function Home({recommendedProducts}: HomeProps) {
+
   return (
     <div>
-      <h1>Hello World NextJS</h1>
+      <section>
+        <Title>Products</Title>
+        <ul>
+          {recommendedProducts.map(recommendedProduct => {
+            return (
+              <li key={recommendedProduct.id}>
+                {recommendedProduct.title}
+              </li>
+            )
+          })}
+        </ul>
+      </section>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  const response = await fetch('http://localhost:3333/recommended');
+  const recommendedProducts = await response.json();
+
+  return {
+    props: {
+      recommendedProducts
+    }
+  }
 }
