@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 interface Product {
     id: string,
