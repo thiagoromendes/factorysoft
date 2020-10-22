@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import { Title } from '../styles/pages/home'
+import { Title } from '@/styles/pages/home'
 
 interface Product {
   id: string;
