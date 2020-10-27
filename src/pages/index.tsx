@@ -1,6 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { Title } from '@/styles/pages/home'
 
+import SEO from '@/components/SEO'
+
 interface Product {
   id: string;
   title: string
@@ -14,6 +16,11 @@ export default function Home({recommendedProducts}: HomeProps) {
 
   return (
     <div>
+      <SEO 
+        title="FactorySoft, o jeito certo de criar software" 
+        shouldExcludeTitleSuffix 
+        image="banner.png"
+      />
       <section>
         <Title>Products</Title>
         <ul>
